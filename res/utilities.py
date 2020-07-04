@@ -1,34 +1,25 @@
 import asyncio
+import datetime
 from pymysql.connections import Connection
 from pyrogram import Client, Filters, InlineKeyboardButton, Message
 from pyrogram.errors import FloodWait
+import re
 from res.configurations import Configurations
 
 
-async def chat_button(client: Client, chat: dict, connection: Connection) -> InlineKeyboardButton:
-	"""
-		A coroutine that creates an InlineKeyboardButton form tha data of a chat
-		:param client: The application
-		:param chat: The chat's data
-		:return: InlineKeyboardButton
-	"""
-	if chat["username"] is not None:
-		invite_link = "https://t.me/{}".format(chat["username"])
-	elif chat["invite_link"] is not None:
-		invite_link = chat["invite_link"]
-	else:
-		# Generating the new invite_link
-		invite_link = await client.export_chat_invite_link(int(chat["id"]))
+async def memo(client: Client, memo_type: str, config: Configurations, connection: Connection):
+	if memo_type == "vitamin D" and datetime.date.today().day != 15:
+		return
 
-		# Saving the new invite_link
-		with connection.cursor() as cursor:
-			cursor.execute("UPDATE `Chats` SET `invite_link`=%(invite_link)s WHERE `id`=%(id)s;", {
-				"id": int(chat["id"]),
-				"invite_link": invite_link
-			})
-		connection.commit()
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT * FROM `Admins`;")
+		for i in cursor.fetchall():
+			if i["id"] == config.get("creator"):
+				await client.send_message(i["id"], "Hi {};\nYou\'re testing the bot.".format(i["first_name"] if i["first_name"] is not None else "@{}".format(i["username"])))
+			else:
+				await client.send_message(i["id"], "Hi {};\nI wanted to remind you that you have to take {}.".format(i["first_name"] if i["first_name"] is not None else "@{}".format(i["username"]), memo_type))
 
-	return InlineKeyboardButton(text=chat["title"], url=invite_link)
+	logger.info("I have remind the supplements.")
 
 
 async def split_edit_text(config: Configurations, message: Message, text: str, **options):

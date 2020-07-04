@@ -1,7 +1,12 @@
-# Bot template
+# PesceMuccaBot
 
-**Python template** for building a **Bot**
+**Bot**, created by [Giulio Coa](https://t.me/giulioCoaInCamelCase), with the aim of reminding [Claudia Schiavone](https://t.me/violetbat) to take supplements.
 
+The bot will take care of sending three messages:
+
+* one at 8.00 every morning, where he will remember to take Phosphorus and Folic Acid.
+* one at 20.00 each evening, where he will remember to take iron and vitamin B12.
+* one at 13.00 on the 15th of each month, where he will remember to take vitamin D.
 
 
 ## Modules
@@ -54,7 +59,7 @@ Module used to connect to a MySQL Server
 
 ### Pyrogram
 
-Module used to create the UserBot
+Module used to create the Bot
 
 * Version: 0.17.0-async
 * Website: https://docs.pyrogram.org/
@@ -62,31 +67,6 @@ Module used to create the UserBot
 * Module name: **pyrogram**
 * Requirements: **TgCrypto**
 * Installing: `pip install --upgrade --no-cache-dir https://github.com/pyrogram/pyrogram/archive/asyncio.zip; pip install --upgrade --no-cache-dir TgCrypto`
-
-
-
-### Requests
-
-HTTP library for Python, built for human beings
-
-* Version: 2.23.0
-* Website: https://requests.readthedocs.io/en/master/
-* Documentation: https://requests.readthedocs.io/en/master/user/advanced/
-* Module name: **requests**
-* Installing: `pip install --upgrade --no-cache-dir requests`
-
-
-
-### Telegraph
-
-Python Telegraph API wrapper
-
-* Version: 1.4.0
-* Website: https://python-telegraph.readthedocs.io/en/latest/
-* Documentation: https://python-telegraph.readthedocs.io/en/latest/telegraph.html
-* Module name: **telegraph**
-* Requirements: **requests**
-* Installing: `pip install --upgrade --no-cache-dir telegraph`
 
 
 
