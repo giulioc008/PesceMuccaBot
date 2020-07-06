@@ -54,7 +54,7 @@ with connection.cursor() as cursor:
 	admins_list = list(map(lambda n: n["id"], cursor.fetchall()))
 
 logger.info("Admins setted\nInitializing the Client ...")
-app = Client(session_name=config.get("bot_username"), api_id=config.get("app_id"), api_hash=config.get("app_hash"), bot_token=config.get("bot_token"), lang_code="it")
+app = Client(session_name=config.get("bot_username"), api_id=config.get("app_id"), api_hash=config.get("app_hash"), bot_token=config.get("bot_token"), lang_code="it", workdir=".")
 
 
 @app.on_message(Filters.command("help", prefixes="/") & Filters.user(admins_list) & Filters.private)
