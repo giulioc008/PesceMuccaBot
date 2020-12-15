@@ -1,6 +1,6 @@
 # PesceMuccaBot
 
-**Bot**, created by [Giulio Coa](https://t.me/giulioCoaInCamelCase), with the aim of reminding [Claudia Schiavone](https://t.me/violetbat) to take supplements.
+**Bot**, created by [Giulio Coa](https://t.me/giulioCoaInCamelCase), with the aim of reminding a friend to take supplements.
 
 The bot will take care of sending three messages:
 
